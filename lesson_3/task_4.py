@@ -10,6 +10,7 @@ MAX_ITEM = 100_000_000
 array = [random.randint(MIN_ITEM, MAX_ITEM) for _ in range(SIZE)]
 print(array)
 
+# Сперва найдем первое отрицательное число в списке
 max_neg, max_neg_ind = 0, 0
 # -- вариант, если мы точно знаем, что есть отрицательный элемент
 while array[max_neg_ind] >= 0:
