@@ -12,7 +12,7 @@ hex_1 = deque(input(f'Введите 1-ое шестнадцатеричное �
 hex_2 = deque(input(f'Введите 2-ое шестнадцатеричное число: '))
 
 
-def sum_els(num_1, num_2):
+def sum_hex(num_1, num_2):
     rest = 0  # Остаток (то, что "держим в уме")
     res_deq = deque([])
     if len(num_2) > len(num_1):  # Заполняем меньшее число нулями слева, чтобы не было ошибки выхода за массив
@@ -32,7 +32,7 @@ def sum_els(num_1, num_2):
     return res_deq
 
 
-def mult_els(num_1, num_2):
+def mult_hex(num_1, num_2):
     _total_deq = list()  # Полный список для хранения результатов умножения всех разрядов(Пример:A2 * F, A2 * 4, A2 * C)
     for ind_2 in range(len(num_2)):
         summand = deque()  # Результат хранения каждого разряда (Пример: результат A2 * F)
@@ -57,7 +57,7 @@ def mult_els(num_1, num_2):
         _total_deq.append(summand)
     res_deq = _total_deq[0]
     for i in range(1, len(_total_deq)):  # Складываем между собой все результаты умножений разных разрядов
-        res_deq = sum_els(res_deq, _total_deq[i])
+        res_deq = sum_hex(res_deq, _total_deq[i])
     while True:  # Удаляем лидирующие нули :)
         if res_deq[0] != '0':
             break
@@ -75,8 +75,8 @@ def test_multiple(func):
     print(f'{func.__name__}: TEST IS OK')
 
 
-test_sum(sum_els)
-test_multiple(mult_els)
+test_sum(sum_hex)
+test_multiple(mult_hex)
 
-print(f'Сумма чисел: {list(sum_els(hex_1, hex_2))}')
-print(f'Произведение чисел: {list(mult_els(hex_1, hex_2))}')
+print(f'Сумма чисел: {list(sum_hex(hex_1, hex_2))}')
+print(f'Произведение чисел: {list(mult_hex(hex_1, hex_2))}')
