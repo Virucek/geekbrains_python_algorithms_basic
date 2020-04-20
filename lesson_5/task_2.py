@@ -29,6 +29,8 @@ def sum_hex(num_1, num_2):
 
 
 def mult_hex(num_1, num_2):
+    if set(num_1) == set('0') or set(num_2) == set('0'):  # Если один из множителей 0 - возвращаем 0.
+        return deque(['0'])
     _total_deq = list()  # Полный список для хранения результатов умножения всех разрядов(Пример:A2 * F, A2 * 4, A2 * C)
     for ind_2 in range(len(num_2)):
         summand = deque()  # Результат хранения каждого разряда (Пример: результат A2 * F)
@@ -66,8 +68,8 @@ def test_multiple(func):
     print(f'{func.__name__}: TEST IS OK')
 
 
-test_sum(sum_hex)
-test_multiple(mult_hex)
+#test_sum(sum_hex)
+#test_multiple(mult_hex)
 
 print(f'Сумма чисел: {list(sum_hex(hex_1, hex_2))}')
 print(f'Произведение чисел: {list(mult_hex(hex_1, hex_2))}')
