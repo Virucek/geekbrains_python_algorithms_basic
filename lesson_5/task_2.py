@@ -22,12 +22,8 @@ def sum_hex(num_1, num_2):
     for ind in range(len(num_1)):
         ind = (ind + 1) * (-1)
         sum_el = HEX_LIST.index(num_1[ind]) + HEX_LIST.index(num_2[ind]) + rest
-        if str(sum_el) in HEX_LIST:
-            res_deq.appendleft(HEX_LIST[sum_el])
-            rest = 0
-        else:
-            res_deq.appendleft(HEX_LIST[sum_el % len(HEX_LIST)])
-            rest = sum_el // len(HEX_LIST)
+        res_deq.appendleft(HEX_LIST[sum_el % len(HEX_LIST)])
+        rest = sum_el // len(HEX_LIST)
 
     return res_deq
 
@@ -43,16 +39,12 @@ def mult_hex(num_1, num_2):
             _ind_1 = ind_1
             ind_1 = (ind_1 + 1) * (-1)
             sum_el = HEX_LIST.index(num_1[ind_1]) * HEX_LIST.index(num_2[ind_2]) + rest
-            if sum_el in HEX_LIST:
-                summand.appendleft(HEX_LIST[sum_el])
-                rest = 0
-            elif _ind_1 + 1 < len(num_1):
-                summand.appendleft(HEX_LIST[sum_el % len(HEX_LIST)])
+            summand.appendleft(HEX_LIST[sum_el % len(HEX_LIST)])
+            if _ind_1 + 1 < len(num_1):
                 rest = sum_el // len(HEX_LIST)
-            else: # Если всё помножено, а rest ещё остался, его необходимо добавить в очередь слева (пускай. даже если 0)
-                summand.appendleft(HEX_LIST[sum_el % len(HEX_LIST)])
+            else:  # Если всё помножено, а rest ещё остался, его необходимо добавить в очередь слева (даже если 0)
                 summand.appendleft(str(sum_el // len(HEX_LIST)))
-        if _ind_2 > 0: # Каждый последующий разряд (после 0) дополняем нулями справа
+        if _ind_2 > 0:  # Каждый последующий разряд (после 0) дополняем нулями справа
             summand.extend(list(_ind_2 * '0'))
         _total_deq.append(summand)
     res_deq = _total_deq[0]
