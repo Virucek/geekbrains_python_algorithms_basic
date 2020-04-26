@@ -34,16 +34,14 @@ def merge_sort(arr):
                 else:
                     arr[idx] = lpart[l]
                     l += 1
-                idx += 1
             # "Прицепляем" остаток
             elif l < len(lpart):
                 arr[idx] = lpart[l]
                 l += 1
-                idx += 1
             else:
                 arr[idx] = rpart[r]
                 r += 1
-                idx += 1
+            idx += 1
 
 
 merge_sort(array)
