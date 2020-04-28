@@ -11,10 +11,9 @@ def hash_subs_unique(_s):
     for j in range(1, len(_s) + 1):
         for i in range(j):
             hash_substr = hashlib.sha1(_s[i:j].encode('utf-8')).hexdigest()
-            if hash_substr in hashes:
-                continue
-            else:
+            if not hash_substr in hashes:
                 hashes.append(hash_substr)
+
     return len(hashes) - 1
 
 
