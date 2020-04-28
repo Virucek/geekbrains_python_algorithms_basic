@@ -5,7 +5,6 @@
 """
 import hashlib
 
-s = input('Введите строку: ')
 
 def hash_subs_unique(_s):
     hashes = []
@@ -28,4 +27,5 @@ def test_func(func):
 
 test_func(hash_subs_unique)
 
+s = input('Введите строку: ')
 print(f'Уникальных подстрок: {hash_subs_unique(s)}')
