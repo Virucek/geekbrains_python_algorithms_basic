@@ -13,7 +13,7 @@ def hash_subs_unique(_s):
             hash_substr = hashlib.sha1(_s[i:j].encode('utf-8')).hexdigest()
             if not hash_substr in hashes:
                 hashes.append(hash_substr)
-
+    # Возвращаем -1 значение, т.к. не включаем строку целиком по заданию
     return len(hashes) - 1
 
 
