@@ -7,12 +7,14 @@ import hashlib
 
 
 def hash_subs_unique(_s):
-    hashes = []
+    # hashes = []
+    hashes = set()
     for j in range(1, len(_s) + 1):
         for i in range(j):
             hash_substr = hashlib.sha1(_s[i:j].encode('utf-8')).hexdigest()
-            if not hash_substr in hashes:
-                hashes.append(hash_substr)
+            # if hash_substr not in hashes:
+            #    hashes.append(hash_substr)
+            hashes.add(hash_substr)
     # Возвращаем -1 значение, т.к. не включаем строку целиком по заданию
     return len(hashes) - 1
 
